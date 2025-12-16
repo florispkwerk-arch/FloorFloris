@@ -11,6 +11,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      margin: 0;
     }
 
     .container {
@@ -18,7 +19,7 @@
       padding: 30px;
       border-radius: 20px;
       text-align: center;
-      width: 350px; /* passend voor 3 knoppen */
+      width: 350px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
 
@@ -44,7 +45,7 @@
       border: none;
       background-color: transparent;
       cursor: pointer;
-      transition: transform 0.2s;
+      transition: transform 0.3s;
       background-image: url("data:image/svg+xml;utf8,\
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
       <path fill='%23ff4d6d' d='M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z'/>\
@@ -55,18 +56,22 @@
     }
 
     .hart-knop:hover {
-      transform: scale(1.15);
+      transform: scale(1.2);
     }
 
     .label {
       margin-top: 5px;
       font-size: 14px;
+      color: #333;
     }
 
     .tekst {
       margin-top: 20px;
       font-size: 16px;
       min-height: 80px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      color: #ff4d6d;
     }
   </style>
 </head>
@@ -78,19 +83,19 @@
     <div class="knoppen">
       <div class="hart-container">
         <button class="hart-knop" 
-                onmouseenter="verdrietig()" 
+                onmouseenter="showTekst('verdrietig')" 
                 onmouseleave="clearTekst()"></button>
         <span class="label">verdrietig</span>
       </div>
       <div class="hart-container">
         <button class="hart-knop" 
-                onmouseenter="blij()" 
+                onmouseenter="showTekst('blij')" 
                 onmouseleave="clearTekst()"></button>
         <span class="label">vrolijk</span>
       </div>
       <div class="hart-container">
         <button class="hart-knop" 
-                onmouseenter="ruzies()" 
+                onmouseenter="showTekst('ruzies')" 
                 onmouseleave="clearTekst()"></button>
         <span class="label">ruzies</span>
       </div>
@@ -100,25 +105,30 @@
   </div>
 
   <script>
-    function verdrietig() {
-      document.getElementById("bericht").innerText =
-        "Hé lieverd ❤️ Het is oké om je even verdrietig te voelen. Ik ben trots op je, je staat er niet alleen voor. Alles komt goed, ik geloof in jou schatje ❤️";
-    }
+    const bericht = document.getElementById("bericht");
 
-    function blij() {
-      document.getElementById("bericht").innerText =
-        "Jaaa 😄❤️ Ik word meteen blij omdat mijn schatje blij is! Blijf lachen, blijf stralen, je maakt de wereld mooier voor iedereen ❤️";
-    }
+    function showTekst(type) {
+      let tekst = "";
+      if(type === 'verdrietig') {
+        tekst = "Hé lieverd ❤️ Het is oké om je even verdrietig te voelen. Ik ben trots op je, je staat er niet alleen voor. Alles komt goed, ik geloof in jou schatje ❤️";
+      } else if(type === 'blij') {
+        tekst = "Jaaa 😄❤️ Ik word meteen blij omdat mijn schatje blij is! Blijf lachen, blijf stralen, je maakt de wereld mooier voor iedereen ❤️";
+      } else if(type === 'ruzies') {
+        tekst = "Hé liefje ❤️ Ook als we eens ruzie hebben, blijf ik van je houden. Vertrouw erop dat alles goedkomt en dat jij altijd mijn schatje blijft 💕";
+      }
 
-    function ruzies() {
-      document.getElementById("bericht").innerText =
-        "Hé schat ❤️ Ook als we eens ruzie hebben, blijf ik van je houden. Vertrouw erop dat alles goedkomt en dat jij altijd mijn vrouwtje blijft ❤️";
+      bericht.innerText = tekst;
+      bericht.style.opacity = 1; // fade-in
     }
 
     function clearTekst() {
-      document.getElementById("bericht").innerText = "";
+      bericht.style.opacity = 0; // fade-out
+      setTimeout(() => {
+        bericht.innerText = "";
+      }, 500); // wacht tot fade-out klaar is
     }
   </script>
 
 </body>
 </html>
+
