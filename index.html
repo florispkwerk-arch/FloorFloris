@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Voor Floor ❤️</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      width: 350px; /* passend voor 3 knoppen */
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .knoppen {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px 0;
+    }
+
+    .hart-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hart-knop {
+      width: 70px;
+      height: 70px;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      transition: transform 0.2s;
+      background-image: url("data:image/svg+xml;utf8,\
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
+      <path fill='%23ff4d6d' d='M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z'/>\
+      </svg>");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .hart-knop:hover {
+      transform: scale(1.15);
+    }
+
+    .label {
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    .tekst {
+      margin-top: 20px;
+      font-size: 16px;
+      min-height: 80px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Voor Floor ❤️</h1>
+    <p>Hoe voel je je?</p>
+    <div class="knoppen">
+      <div class="hart-container">
+        <button class="hart-knop" 
+                onmouseenter="verdrietig()" 
+                onmouseleave="clearTekst()"></button>
+        <span class="label">verdrietig</span>
+      </div>
+      <div class="hart-container">
+        <button class="hart-knop" 
+                onmouseenter="blij()" 
+                onmouseleave="clearTekst()"></button>
+        <span class="label">vrolijk</span>
+      </div>
+      <div class="hart-container">
+        <button class="hart-knop" 
+                onmouseenter="ruzies()" 
+                onmouseleave="clearTekst()"></button>
+        <span class="label">ruzies</span>
+      </div>
+    </div>
+
+    <div class="tekst" id="bericht"></div>
+  </div>
+
+  <script>
+    function verdrietig() {
+      document.getElementById("bericht").innerText =
+        "Hé lieverd ❤️ Het is oké om je even verdrietig te voelen. Ik ben trots op je, je staat er niet alleen voor. Alles komt goed, ik geloof in jou schatje ❤️";
+    }
+
+    function blij() {
+      document.getElementById("bericht").innerText =
+        "Jaaa 😄❤️ Ik word meteen blij omdat mijn schatje blij is! Blijf lachen, blijf stralen, je maakt de wereld mooier voor iedereen ❤️";
+    }
+
+    function ruzies() {
+      document.getElementById("bericht").innerText =
+        "Hé schat ❤️ Ook als we eens ruzie hebben, blijf ik van je houden. Vertrouw erop dat alles goedkomt en dat jij altijd mijn vrouwtje blijft ❤️";
+    }
+
+    function clearTekst() {
+      document.getElementById("bericht").innerText = "";
+    }
+  </script>
+
+</body>
+</html>
